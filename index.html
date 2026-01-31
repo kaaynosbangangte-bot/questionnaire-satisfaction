@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire de Satisfaction Patient</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-style: italic;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .date-field {
+            text-align: right;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .date-field input {
+            border: none;
+            border-bottom: 1px solid #333;
+            width: 200px;
+            margin-left: 10px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            color: #8bc34a;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #333;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #fff;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        td:first-child {
+            text-align: left;
+            font-weight: bold;
+            width: 40%;
+        }
+
+        .checkbox-group {
+            margin-bottom: 8px;
+        }
+
+        .checkbox-group label {
+            margin-right: 20px;
+            font-size: 14px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .question {
+            font-style: italic;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .recommendation-options {
+            margin-bottom: 15px;
+        }
+
+        .recommendation-options label {
+            margin-right: 20px;
+            font-size: 14px;
+        }
+
+        .suggestions {
+            margin-top: 15px;
+        }
+
+        .suggestions p {
+            font-style: italic;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .suggestions input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #333;
+            margin-bottom: 8px;
+            padding: 5px 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 2px solid #8bc34a;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .property-section {
+            margin-bottom: 15px;
+        }
+
+        .property-section > div {
+            margin-bottom: 8px;
+        }
+
+        .property-label {
+            font-weight: bold;
+            display: inline-block;
+            width: 250px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" alt="Cabinet Dentaire Smile" style="max-width: 400px; height: auto;">
+        </div>
+
+        <h1>QUESTIONNAIRE DE SATISFACTION PATIENT</h1>
+        <p class="subtitle">Ce questionnaire est anonyme pour garantir des réponses honnêtes.</p>
+
+        <form id="satisfactionForm">
+        <div class="date-field">
+            <strong>Date de la visite :</strong> <input type="text" name="date_visite">
+        </div>
+
+        <!-- Section 1 -->
+        <div class="section">
+            <div class="section-title">1. Accueil et Prise de Rendez-vous</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Critères</th>
+                        <th>Très<br>Satisfait</th>
+                        <th>Satisfait</th>
+                        <th>Peu<br>Satisfait</th>
+                        <th>Insatisfait</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Facilité de prise de rendez-vous</td>
+                        <td><input type="radio" name="rdv_facilite" value="Très satisfait"></td>
+                        <td><input type="radio" name="rdv_facilite" value="Satisfait"></td>
+                        <td><input type="radio" name="rdv_facilite" value="Peu satisfait"></td>
+                        <td><input type="radio" name="rdv_facilite" value="Insatisfait"></td>
+                    </tr>
+                    <tr>
+                        <td>Accueil physique et téléphonique</td>
+                        <td><input type="radio" name="rdv_accueil" value="Très satisfait"></td>
+                        <td><input type="radio" name="rdv_accueil" value="Satisfait"></td>
+                        <td><input type="radio" name="rdv_accueil" value="Peu satisfait"></td>
+                        <td><input type="radio" name="rdv_accueil" value="Insatisfait"></td>
+                    </tr>
+                    <tr>
+                        <td>Temps d'attente en salle d'attente</td>
+                        <td><input type="radio" name="rdv_attente" value="Très satisfait"></td>
+                        <td><input type="radio" name="rdv_attente" value="Satisfait"></td>
+                        <td><input type="radio" name="rdv_attente" value="Peu satisfait"></td>
+                        <td><input type="radio" name="rdv_attente" value="Insatisfait"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="section">
+            <div class="section-title">2. Cadre et Environnement</div>
+            <div class="property-section">
+                <div>
+                    <span class="property-label">Propreté et hygiène des locaux :</span>
+                    <label><input type="radio" name="proprete" value="Excellent"> Excellent</label>
+                    <label><input type="radio" name="proprete" value="Bon"> Bon</label>
+                    <label><input type="radio" name="proprete" value="Moyen"> Moyen</label>
+                    <label><input type="radio" name="proprete" value="Insatisfait"> Insatisfait</label>
+                </div>
+                <div>
+                    <span class="property-label">Confort de la salle d'attente :</span>
+                    <label><input type="radio" name="confort" value="Excellent"> Excellent</label>
+                    <label><input type="radio" name="confort" value="Bon"> Bon</label>
+                    <label><input type="radio" name="confort" value="Moyen"> Moyen</label>
+                    <label><input type="radio" name="confort" value="Insatisfait"> Insatisfait</label>
+                </div>
+                <div>
+                    <span class="property-label">Propreté des toilettes :</span>
+                    <label><input type="radio" name="toilettes" value="Excellent"> Excellent</label>
+                    <label><input type="radio" name="toilettes" value="Bon"> Bon</label>
+                    <label><input type="radio" name="toilettes" value="Moyen"> Moyen</label>
+                    <label><input type="radio" name="toilettes" value="Insatisfait"> Insatisfait</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="section">
+            <div class="section-title">3. La Consultation et les Soins</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Critères</th>
+                        <th>Très<br>Satisfait</th>
+                        <th>Satisfait</th>
+                        <th>Peu<br>Satisfait</th>
+                        <th>Insatisfait</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Clarté des explications sur<br>le traitement</td>
+                        <td><input type="radio" name="clarte_traitement" value="Très satisfait"></td>
+                        <td><input type="radio" name="clarte_traitement" value="Satisfait"></td>
+                        <td><input type="radio" name="clarte_traitement" value="Peu satisfait"></td>
+                        <td><input type="radio" name="clarte_traitement" value="Insatisfait"></td>
+                    </tr>
+                    <tr>
+                        <td>Écoute et empathie du praticien</td>
+                        <td><input type="radio" name="empathie" value="Très satisfait"></td>
+                        <td><input type="radio" name="empathie" value="Satisfait"></td>
+                        <td><input type="radio" name="empathie" value="Peu satisfait"></td>
+                        <td><input type="radio" name="empathie" value="Insatisfait"></td>
+                    </tr>
+                    <tr>
+                        <td>Prise en charge de la douleur</td>
+                        <td><input type="radio" name="douleur" value="Très satisfait"></td>
+                        <td><input type="radio" name="douleur" value="Satisfait"></td>
+                        <td><input type="radio" name="douleur" value="Peu satisfait"></td>
+                        <td><input type="radio" name="douleur" value="Insatisfait"></td>
+                    </tr>
+                    <tr>
+                        <td>Clarté des informations administratives<br>(devis, facture, consentement éclairé)</td>
+                        <td><input type="radio" name="info_admin" value="Très satisfait"></td>
+                        <td><input type="radio" name="info_admin" value="Satisfait"></td>
+                        <td><input type="radio" name="info_admin" value="Peu satisfait"></td>
+                        <td><input type="radio" name="info_admin" value="Insatisfait"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="section">
+            <div class="section-title">4. Avis Global</div>
+            
+            <p class="question">Recommanderiez-vous ce cabinet à votre entourage ?</p>
+            <div class="recommendation-options">
+                <label><input type="radio" name="recommandation" value="Oui, tout à fait"> Oui, tout à fait</label>
+                <label><input type="radio" name="recommandation" value="Probablement"> Probablement</label>
+                <label><input type="radio" name="recommandation" value="Non, pas particulièrement"> Non, pas particulièrement</label>
+            </div>
+
+            <div class="suggestions">
+                <p>Avez-vous des suggestions ou des remarques pour nous aider à nous améliorer ?</p>
+                <strong>1)</strong> <input type="text" name="suggestion1"><br>
+                <strong>2)</strong> <input type="text" name="suggestion2"><br>
+                <strong>3)</strong> <input type="text" name="suggestion3"><br>
+                <strong>4)</strong> <input type="text" name="suggestion4">
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button type="submit" style="background-color: #8bc34a; color: white; padding: 15px 40px; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer;">
+                Envoyer le questionnaire
+            </button>
+        </div>
+        </form>
+
+        <div class="footer">
+            <strong>Bafoussam - Tamdja, 1er étage Immeuble Guifeurou - B.P. 444 Bafoussam-Cameroun</strong><br>
+            <strong>Tél : (+257) 233 444 568 / 675 069 963 / 691 635 893 - Email : cabinetssmile@yahoo.com</strong>
+        </div>
+    </div>
+
+    <script>
+    document.getElementById("satisfactionForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const data = Object.fromEntries(new FormData(this).entries());
+
+        fetch("https://script.google.com/macros/s/AKfycbyOoQBr-DWJ3XPrIV0oCFnhEqPpneSIwzjFkokV_p5zQyHY75W8B6Fr0stdKty4ff_nbA/exec", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(() => {
+            alert("Merci pour votre réponse !");
+            this.reset();
+        })
+        .catch(() => {
+            alert("Erreur lors de l'envoi. Veuillez réessayer.");
+        });
+    });
+    </script>
+</body>
+</html>
