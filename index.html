@@ -102,6 +102,7 @@
 
         input[type="radio"] {
             margin-right: 5px;
+            cursor: pointer;
         }
 
         .question {
@@ -117,6 +118,7 @@
         .recommendation-options label {
             margin-right: 20px;
             font-size: 14px;
+            cursor: pointer;
         }
 
         .suggestions {
@@ -160,6 +162,36 @@
             width: 250px;
             font-size: 14px;
         }
+
+        button[type="submit"] {
+            background-color: #8bc34a;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #7cb342;
+        }
+
+        button[type="submit"]:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .config-warning {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -170,6 +202,11 @@
 
         <h1>QUESTIONNAIRE DE SATISFACTION PATIENT</h1>
         <p class="subtitle">Ce questionnaire est anonyme pour garantir des réponses honnêtes.</p>
+
+        <!-- Avertissement de configuration (à supprimer après configuration) -->
+        <div class="config-warning" id="configWarning" style="display: none;">
+            ⚠️ <strong>ATTENTION:</strong> Vous devez configurer l'URL du Google Apps Script dans le code HTML avant utilisation !
+        </div>
 
         <form id="satisfactionForm">
         <div class="date-field">
@@ -192,21 +229,21 @@
                 <tbody>
                     <tr>
                         <td>Facilité de prise de rendez-vous</td>
-                        <td><input type="radio" name="rdv_facilite" value="Très satisfait"></td>
+                        <td><input type="radio" name="rdv_facilite" value="Très satisfait" required></td>
                         <td><input type="radio" name="rdv_facilite" value="Satisfait"></td>
                         <td><input type="radio" name="rdv_facilite" value="Peu satisfait"></td>
                         <td><input type="radio" name="rdv_facilite" value="Insatisfait"></td>
                     </tr>
                     <tr>
                         <td>Accueil physique et téléphonique</td>
-                        <td><input type="radio" name="rdv_accueil" value="Très satisfait"></td>
+                        <td><input type="radio" name="rdv_accueil" value="Très satisfait" required></td>
                         <td><input type="radio" name="rdv_accueil" value="Satisfait"></td>
                         <td><input type="radio" name="rdv_accueil" value="Peu satisfait"></td>
                         <td><input type="radio" name="rdv_accueil" value="Insatisfait"></td>
                     </tr>
                     <tr>
                         <td>Temps d'attente en salle d'attente</td>
-                        <td><input type="radio" name="rdv_attente" value="Très satisfait"></td>
+                        <td><input type="radio" name="rdv_attente" value="Très satisfait" required></td>
                         <td><input type="radio" name="rdv_attente" value="Satisfait"></td>
                         <td><input type="radio" name="rdv_attente" value="Peu satisfait"></td>
                         <td><input type="radio" name="rdv_attente" value="Insatisfait"></td>
@@ -221,21 +258,21 @@
             <div class="property-section">
                 <div>
                     <span class="property-label">Propreté et hygiène des locaux :</span>
-                    <label><input type="radio" name="proprete" value="Excellent"> Excellent</label>
+                    <label><input type="radio" name="proprete" value="Excellent" required> Excellent</label>
                     <label><input type="radio" name="proprete" value="Bon"> Bon</label>
                     <label><input type="radio" name="proprete" value="Moyen"> Moyen</label>
                     <label><input type="radio" name="proprete" value="Insatisfait"> Insatisfait</label>
                 </div>
                 <div>
                     <span class="property-label">Confort de la salle d'attente :</span>
-                    <label><input type="radio" name="confort" value="Excellent"> Excellent</label>
+                    <label><input type="radio" name="confort" value="Excellent" required> Excellent</label>
                     <label><input type="radio" name="confort" value="Bon"> Bon</label>
                     <label><input type="radio" name="confort" value="Moyen"> Moyen</label>
                     <label><input type="radio" name="confort" value="Insatisfait"> Insatisfait</label>
                 </div>
                 <div>
                     <span class="property-label">Propreté des toilettes :</span>
-                    <label><input type="radio" name="toilettes" value="Excellent"> Excellent</label>
+                    <label><input type="radio" name="toilettes" value="Excellent" required> Excellent</label>
                     <label><input type="radio" name="toilettes" value="Bon"> Bon</label>
                     <label><input type="radio" name="toilettes" value="Moyen"> Moyen</label>
                     <label><input type="radio" name="toilettes" value="Insatisfait"> Insatisfait</label>
@@ -259,28 +296,28 @@
                 <tbody>
                     <tr>
                         <td>Clarté des explications sur<br>le traitement</td>
-                        <td><input type="radio" name="clarte_traitement" value="Très satisfait"></td>
+                        <td><input type="radio" name="clarte_traitement" value="Très satisfait" required></td>
                         <td><input type="radio" name="clarte_traitement" value="Satisfait"></td>
                         <td><input type="radio" name="clarte_traitement" value="Peu satisfait"></td>
                         <td><input type="radio" name="clarte_traitement" value="Insatisfait"></td>
                     </tr>
                     <tr>
                         <td>Écoute et empathie du praticien</td>
-                        <td><input type="radio" name="empathie" value="Très satisfait"></td>
+                        <td><input type="radio" name="empathie" value="Très satisfait" required></td>
                         <td><input type="radio" name="empathie" value="Satisfait"></td>
                         <td><input type="radio" name="empathie" value="Peu satisfait"></td>
                         <td><input type="radio" name="empathie" value="Insatisfait"></td>
                     </tr>
                     <tr>
                         <td>Prise en charge de la douleur</td>
-                        <td><input type="radio" name="douleur" value="Très satisfait"></td>
+                        <td><input type="radio" name="douleur" value="Très satisfait" required></td>
                         <td><input type="radio" name="douleur" value="Satisfait"></td>
                         <td><input type="radio" name="douleur" value="Peu satisfait"></td>
                         <td><input type="radio" name="douleur" value="Insatisfait"></td>
                     </tr>
                     <tr>
                         <td>Clarté des informations administratives<br>(devis, facture, consentement éclairé)</td>
-                        <td><input type="radio" name="info_admin" value="Très satisfait"></td>
+                        <td><input type="radio" name="info_admin" value="Très satisfait" required></td>
                         <td><input type="radio" name="info_admin" value="Satisfait"></td>
                         <td><input type="radio" name="info_admin" value="Peu satisfait"></td>
                         <td><input type="radio" name="info_admin" value="Insatisfait"></td>
@@ -295,7 +332,7 @@
             
             <p class="question">Recommanderiez-vous ce cabinet à votre entourage ?</p>
             <div class="recommendation-options">
-                <label><input type="radio" name="recommandation" value="Oui, tout à fait"> Oui, tout à fait</label>
+                <label><input type="radio" name="recommandation" value="Oui, tout à fait" required> Oui, tout à fait</label>
                 <label><input type="radio" name="recommandation" value="Probablement"> Probablement</label>
                 <label><input type="radio" name="recommandation" value="Non, pas particulièrement"> Non, pas particulièrement</label>
             </div>
@@ -310,7 +347,7 @@
         </div>
 
         <div style="text-align: center; margin-top: 30px;">
-            <button type="submit" style="background-color: #8bc34a; color: white; padding: 15px 40px; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer;">
+            <button type="submit">
                 Envoyer le questionnaire
             </button>
         </div>
@@ -323,27 +360,81 @@
     </div>
 
     <script>
+    // ========================================
+    // ⚠️ CONFIGURATION OBLIGATOIRE
+    // ========================================
+    // Remplacez l'URL ci-dessous par l'URL de votre Google Apps Script
+    // Elle doit se terminer par /exec
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw_hWFOF-Ib_bBXX_eGOp2IuhtQ6mkFIMwMxJ7x-Y2-5stxHBupmFmnWUdiXoN5avvtbQ/exec";
+    // ========================================
+
+    // Vérifier si l'URL est configurée au chargement
+    if (SCRIPT_URL === "COLLEZ_VOTRE_URL_ICI") {
+        document.getElementById("configWarning").style.display = "block";
+        console.error("⚠️ URL du script non configurée !");
+    }
+    
     document.getElementById("satisfactionForm").addEventListener("submit", function(e) {
         e.preventDefault();
+        
+        // Vérifier que l'URL est configurée
+        if (SCRIPT_URL === "COLLEZ_VOTRE_URL_ICI") {
+            alert("❌ ERREUR DE CONFIGURATION\n\nVous devez d'abord configurer l'URL du Google Apps Script dans le code HTML !\n\nConsultez le guide d'installation.");
+            return;
+        }
+        
+        // Afficher un message de chargement
+        const submitBtn = document.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = "⏳ Envoi en cours...";
+        submitBtn.disabled = true;
 
-        const data = Object.fromEntries(new FormData(this).entries());
+        // Collecter les données du formulaire
+        const formData = new FormData(this);
+        const data = {};
+        
+        // Convertir FormData en objet
+        for (let [key, value] of formData.entries()) {
+            data[key] = value;
+        }
+        
+        console.log("📤 Données à envoyer:", data);
+        console.log("🌐 URL de destination:", SCRIPT_URL);
 
-        fetch("https://script.google.com/macros/s/AKfycbznIrQRu5DRz-MWe0d__0nAbX9FwNV-brS6VNsoRzcxAJnbyCzV7jFP0y4WsU60apVuBg/exec", {
+        // Envoyer les données avec mode no-cors
+        fetch(SCRIPT_URL, {
             method: "POST",
-            body: JSON.stringify(data),
+            mode: "no-cors",
+            cache: "no-cache",
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            redirect: "follow",
+            body: JSON.stringify(data)
         })
-        .then(() => {
-            alert("Merci pour votre réponse !");
+        .then(response => {
+            console.log("✅ Réponse reçue:", response);
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            
+            // Avec no-cors, on ne peut pas lire la réponse
+            // Donc on suppose que ça a fonctionné si pas d'erreur
+            alert("✅ Merci pour votre réponse !\n\nVos commentaires ont été enregistrés avec succès.");
             this.reset();
         })
-        .catch(() => {
-            alert("Erreur lors de l'envoi. Veuillez réessayer.");
+        .catch(error => {
+            console.error("❌ Erreur détaillée:", error);
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            
+            alert("❌ Erreur lors de l'envoi\n\n" + 
+                  "Détails: " + error.message + "\n\n" +
+                  "Vérifiez:\n" +
+                  "1. Que l'URL du script est correcte\n" +
+                  "2. Que le déploiement est actif\n" +
+                  "3. Que 'Qui a accès' est sur 'Tout le monde'");
         });
     });
     </script>
 </body>
-
 </html>
